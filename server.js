@@ -6,6 +6,9 @@ import mongoose from "mongoose";
 import morgan from "morgan";
 
 // my modules
+import ingredientsRoute from "./routes/ingredients.js";
+import othersRoute from "./routes/others.js";
+import recipiesRoute from "./routes/recipies.js";
 
 const app = express();
 
@@ -15,7 +18,9 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan(formatsLogger));
 
-// app.use("/routes", router);
+app.use("/ingredients", ingredientsRoute);
+app.use("/", othersRoute);
+app.use("/recipes", recipiesRoute);
 
 app.use((_, res) => {
   res.status(404).json({ message: "Not found" });
