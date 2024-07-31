@@ -1,7 +1,7 @@
 // npm modules
 import { Schema, model } from "mongoose";
 
-const categoriesSchema = new Schema({
+const categorySchema = new Schema({
     _id: {
         type: String,
         required: true
@@ -19,6 +19,6 @@ const categoriesSchema = new Schema({
     },
 });
 
-const Category = model('category', categoriesSchema, 'categoriesList');
+const Category = model('category', categorySchema, 'categoriesList');
 
 export default Category;
