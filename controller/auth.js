@@ -19,8 +19,11 @@ export const register = async (req, res, next) => {
     const newUser = new User({ name, email });
     await newUser.setPassword(password);
     await newUser.save();
+
+    res.status(201).json({ message: "User registered successfully" });
   } catch (error) {
     next(error);
+    console.log(error);
   }
 };
 
@@ -55,5 +58,6 @@ export const login = async (req, res, next) => {
     });
   } catch (error) {
     next(error);
+    console.log(error);
   }
 };
