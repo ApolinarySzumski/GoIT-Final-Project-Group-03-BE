@@ -2,10 +2,6 @@
 import { Schema, model } from "mongoose";
 
 const categorySchema = new Schema({
-    _id: {
-        type: String,
-        required: true
-    },
     title: {
         type: String,
         required: [true, 'Category title is required']
