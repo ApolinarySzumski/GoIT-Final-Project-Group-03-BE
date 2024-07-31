@@ -35,6 +35,6 @@ userSchema.methods.validatePassword = async function(password) {
     return await bCrypt.compare(password, this.password);
 }
 
-const User = model("user", userSchema, 'users');
+const User = model('user', userSchema, 'users');
 
 export default User;
