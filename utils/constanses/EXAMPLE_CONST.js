@@ -1,5 +1,5 @@
 const EXAMPLE_CONST = {
-    example: "example";
+  example: "example",
 };
 
 export default EXAMPLE_CONST;
