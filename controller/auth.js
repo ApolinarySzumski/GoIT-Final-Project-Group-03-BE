@@ -61,3 +61,19 @@ export const login = async (req, res, next) => {
     console.log(error);
   }
 };
+
+export const getCurrentUser = async (req, res, next) => {
+  try {
+    const user = req.user;
+    if (!user) {
+      return res.status(401).json({ message: "Not authorized" });
+    }
+    res.status(200).json({
+      name: user.name,
+      email: user.email,
+    });
+  } catch (error) {
+    next(error);
+    console.log(error);
+  }
+};
