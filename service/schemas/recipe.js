@@ -52,16 +52,10 @@ const recipeSchema = new Schema({
     tags: [{ 
         type: String 
     }],
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now
-    },
     ingredients: [ingredientMeasureSchema]
-  });
+  },
+  { versionKey: false, timestamps: true },
+);
 
 const Recipe = model('recipe', recipeSchema, 'recipes');
 
