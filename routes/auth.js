@@ -2,9 +2,8 @@
 import express from "express";
 
 // my modules
-import authorizatiion from "../middlewares/jwtMiddleware.js";
-import passport from "../middlewares/passportConfig.js";
-import { register, login } from "../controller/auth.js";
+import { login, register } from "../controller/auth.js";
+import passport from "../config/passportConfig.js";
 
 const route = express.Router();
 
