@@ -2,7 +2,11 @@
 import express from "express";
 
 // my modules
-import authorizatiion from "../middlewares/jwtMiddleware.js";
+import authorization from "../middlewares/jwtMiddleware.js";
+import validateBody, {
+  registerSchema,
+  loginSchema,
+} from "../validation/userValidation.js";
 import passport from "../middlewares/passportConfig.js";
 import {
   register,
@@ -16,10 +20,10 @@ const route = express.Router();
 
 route.use(passport.initialize());
 
-route.post("/register", register);
-route.post("/login", login);
-route.get("/current", authorizatiion, getCurrentUser);
-route.patch("/", authorizatiion, updateUserDetails);
-route.get("/logout", authorizatiion, logout);
+route.post("/register", validateBody(registerSchema), register);
+route.post("/login", validateBody(loginSchema), login);
+route.get("/current", authorization, getCurrentUser);
+route.patch("/", authorization, updateUserDetails);
+route.get("/logout", authorization, logout);
 
 export default route;
