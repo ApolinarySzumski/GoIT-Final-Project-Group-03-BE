@@ -91,14 +91,30 @@ export const updateUserDetails = async (req, res, next) => {
       return res.status(404).json({ message: "User not found" });
     }
     res.status(200).json({
-      status: "success",
-      code: 200,
       data: {
         name: user.name,
         email: user.email,
       },
-      message: "Details have been updated",
+      message: "Details have been updated succesfully",
     });
+  } catch (error) {
+    next(error);
+    console.log(error);
+  }
+};
+
+export const logout = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      return res.status(401), json({ message: "Not authorized" });
+    }
+
+    user.token = null;
+    await user.save();
+
+    res.status(204).send();
   } catch (error) {
     next(error);
     console.log(error);
