@@ -27,6 +27,15 @@ export const loginSchema = Joi.object({
   }),
 });
 
+export const updateDetailsSchema = Joi.object({
+  name: Joi.string().min(3).messages({
+    "string.min": "Name must be at least 3 characters long",
+  }),
+  email: Joi.string().email().messages({
+    "string.email": "Please enter a valid email",
+  }),
+});
+
 const validateBody = (schema) => {
   return (req, res, next) => {
     const { error } = schema.validate(req.body);
