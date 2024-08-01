@@ -1,7 +1,7 @@
 // npm modules
 import { Schema, model } from "mongoose";
 
-const ingredientSchema = new Schema({
+const ingredientMeasureSchema = new Schema({
     measure: {
         type: String,
         required: true
@@ -60,7 +60,7 @@ const recipeSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    ingredients: [ingredientSchema]
+    ingredients: [ingredientMeasureSchema]
   });
 
 const Recipe = model('recipe', recipeSchema, 'recipes');

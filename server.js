@@ -8,7 +8,7 @@ import morgan from "morgan";
 // my modules
 import ingredientsRoute from "./routes/ingredients.js";
 import othersRoute from "./routes/others.js";
-import recipesRoute from "./routes/recipies.js";
+import recipesRoute from "./routes/recipes.js";
 import authRoute from "./routes/auth.js";
 
 const app = express();
