@@ -1,6 +1,6 @@
 // npm modules
 import express from "express";
-import auth from "../middlewares/jwtMiddleware.js";
+import authorization from "../middlewares/jwtMiddleware.js";
 
 // my modules
 import { subscribeNewsletter } from "../controller/others.js";
@@ -12,6 +12,6 @@ route.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-route.post("/subscribe", auth, subscribeNewsletter);
+route.post("/subscribe", authorization, subscribeNewsletter);
 
 export default route;
