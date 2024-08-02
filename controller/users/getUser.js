@@ -5,7 +5,7 @@ const getUser = async (req, res, next) => {
     res.json({
       name: user.name,
       email: user.email,
-      subscription: user.subscription,
+      subscribe: user.subscribe,
     });
   } catch (error) {
     next(error);
