@@ -10,11 +10,11 @@ const getMyRecipes = async (req, res, next) => {
   const skip = (page - 1) * limit;
   const userId = req.user._id;
   const filter = { owner: userId };
-  if (!filter) {
-    return res.json({ message: "No own recipes in the database" });
-  }
   try {
     const results = await getRecipes(filter, skip, limit);
+    if (!results || results.length === 0) {
+      return res.json({ message: "No recipes added yet" });
+    }
     res.json({ data: { results } });
   } catch (error) {
     next(error);
