@@ -24,7 +24,7 @@ app.use("/ingredients", ingredientsRoute);
 app.use("/", othersRoute);
 app.use("/recipes", recipesRoute);
 app.use("/users", authRoute);
-app.use("/own", ownRecipesRoute);
+app.use("/ownRecipes", ownRecipesRoute);
 
 app.use((_, res) => {
   res.status(404).json({ message: "Not found" });

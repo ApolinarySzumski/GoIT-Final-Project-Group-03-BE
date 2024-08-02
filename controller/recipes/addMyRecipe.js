@@ -37,8 +37,8 @@ const addMyRecipe = async (req, res, next) => {
       data: { recipe: result },
     });
   } catch (error) {
-    console.log(error);
     next(error);
+    console.log(error);
   }
 };
 
