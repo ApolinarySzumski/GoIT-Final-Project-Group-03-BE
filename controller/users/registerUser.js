@@ -1,4 +1,4 @@
-export const registerUser = async (req, res, next) => {
+const registerUser = async (req, res, next) => {
   const { name, email, password } = req.body;
 
   try {
@@ -17,3 +17,5 @@ export const registerUser = async (req, res, next) => {
     console.log(error);
   }
 };
+
+export default registerUser;

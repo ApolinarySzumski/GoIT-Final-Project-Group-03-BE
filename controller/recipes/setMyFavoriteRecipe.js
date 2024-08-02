@@ -1,10 +1,11 @@
-import React from "react";
-
-export const setMyFavoriteRecipe = = async (req, res, next) => {
+const setMyFavoriteRecipe = = async (req, res, next) => {
   try {
     // code
-    res.status(200).json({ message: "OK" });
+    res.json({ message: "OK" });
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };
+
+export default setMyFavoriteRecipe;

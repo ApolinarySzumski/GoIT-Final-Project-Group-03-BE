@@ -1,13 +1,13 @@
 // npm modules
-import jwt from "jsonwebtoken";
 import "dotenv/config";
+import jwt from "jsonwebtoken";
 
 // my modules
-import User from "../../service/schemas/user";
+import User from "../../service/schemas/user.js";
 
 const secret = process.env.SECRET;
 
-export const loginUser = async (req, res, next) => {
+const loginUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
@@ -41,3 +41,5 @@ export const loginUser = async (req, res, next) => {
     console.log(error);
   }
 };
+
+export default loginUser;

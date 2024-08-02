@@ -1,13 +1,7 @@
-import getUser from './getUser';
-import changeUserAvatar from './changeAvatar';
-import changeUserName from './changeName';
-import loginUser from './loginUser';
-import logoutUser from './logoutUser';
-import registerUser from './register';
+import getUser from "./getUser.js";
+import loginUser from "./loginUser.js";
+import logoutUser from "./logoutUser.js";
+import registerUser from "./registerUser.js";
+import updateUserDetails from "./updateUserDetails.js";
 
-export getUser;
-export changeUserAvatar;
-export changeUserName;
-export loginUser;
-export logoutUser;
-export register;
+export { getUser, loginUser, logoutUser, registerUser, updateUserDetails };

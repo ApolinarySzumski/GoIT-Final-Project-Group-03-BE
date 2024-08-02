@@ -1,6 +1,4 @@
-import React from "react";
-
-export const getCategoryNames = async (req, res, next) => {
+const getCategoryNames = async (req, res, next) => {
   try {
     const categories = await Category.find().select("title").sort({ title: 1 });
 
@@ -12,3 +10,5 @@ export const getCategoryNames = async (req, res, next) => {
     next(err);
   }
 };
+
+export default getCategoryNames;

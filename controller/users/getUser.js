@@ -1,10 +1,16 @@
-import React from "react";
-
-export const getUser = async (req, res, next) => {
+const getUser = async (req, res, next) => {
   try {
-    // code
-    res.status(200).json({ message: "OK" });
+    const user = req.user;
+
+    res.json({
+      name: user.name,
+      email: user.email,
+      subscription: user.subscription,
+    });
   } catch (error) {
     next(error);
+    console.log(error);
   }
 };
+
+export default getUser;
