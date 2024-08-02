@@ -9,7 +9,7 @@ import validateBody, {
   loginSchema,
   updateDetailsSchema,
 } from "../validation/userValidation.js";
-import passport from "../middlewares/passportConfig.js";
+import passport from "../config/passportConfig.js";
 import {
   register,
   login,
