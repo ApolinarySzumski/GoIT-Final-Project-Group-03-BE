@@ -2,7 +2,6 @@
 import express from "express";
 
 // my modules
-import { subscribeNewsletter } from "../controller/others.js";
 
 const route = express.Router();
 

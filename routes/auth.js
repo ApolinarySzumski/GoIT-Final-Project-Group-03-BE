@@ -2,6 +2,7 @@
 import express from "express";
 
 // my modules
+
 import authorization from "../middlewares/jwtMiddleware.js";
 import validateBody, {
   registerSchema,
@@ -16,6 +17,7 @@ import {
   updateUserDetails,
   logout,
 } from "../controller/auth.js";
+
 
 const route = express.Router();
 
