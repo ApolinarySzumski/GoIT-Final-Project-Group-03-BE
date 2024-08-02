@@ -2,8 +2,8 @@
 import express from "express";
 
 // my modules
-import { login, register } from "../controller/auth.js";
 import passport from "../config/passportConfig.js";
+import { login, register } from "../controller/auth.js";
 
 const route = express.Router();
 
