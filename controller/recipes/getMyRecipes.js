@@ -1,5 +1,10 @@
 import React from "react";
 
-export const getMyRecipes = () => {
-  return <div>getMyRecipes</div>;
+export const getMyRecipes = = async (req, res, next) => {
+  try {
+    // code
+    res.status(200).json({ message: "OK" });
+  } catch (error) {
+    next(error);
+  }
 };

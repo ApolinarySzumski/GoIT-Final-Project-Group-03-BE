@@ -1,4 +1,4 @@
-export const register = async (req, res, next) => {
+export const registerUser = async (req, res, next) => {
   const { name, email, password } = req.body;
 
   try {
