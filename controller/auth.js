@@ -1,6 +1,6 @@
 // npm modules
-import jwt from "jsonwebtoken";
 import "dotenv/config";
+import jwt from "jsonwebtoken";
 
 // my modules
 import User from "../service/schemas/user.js";
@@ -64,10 +64,8 @@ export const login = async (req, res, next) => {
 export const getCurrentUser = async (req, res, next) => {
   try {
     const user = req.user;
-    if (!user) {
-      return res.status(401).json({ message: "Not authorized" });
-    }
-    res.status(200).json({
+
+    res.json({
       name: user.name,
       email: user.email,
       subscription: user.subscription,
@@ -84,12 +82,12 @@ export const updateUserDetails = async (req, res, next) => {
     const user = await User.findByIdAndUpdate(
       req.user._id,
       { name, email },
-      { new: true }
+      { new: true },
     );
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-    res.status(200).json({
+    res.json({
       data: {
         name: user.name,
         email: user.email,
@@ -105,10 +103,6 @@ export const updateUserDetails = async (req, res, next) => {
 export const logout = async (req, res, next) => {
   try {
     const user = await User.findById(req.user._id);
-
-    if (!user) {
-      return res.status(401), json({ message: "Not authorized" });
-    }
 
     user.token = null;
     await user.save();

@@ -25,10 +25,10 @@ route.post("/register", validateBody(registerSchema), register);
 route.post("/login", validateBody(loginSchema), login);
 route.get("/current", authorization, getCurrentUser);
 route.patch(
-  "/",
+  "/update",
   authorization,
   validateBody(updateDetailsSchema),
-  updateUserDetails
+  updateUserDetails,
 );
 route.get("/logout", authorization, logout);
 
