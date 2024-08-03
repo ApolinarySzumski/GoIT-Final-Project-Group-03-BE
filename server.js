@@ -4,6 +4,8 @@ import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
 import morgan from "morgan";
+import path from "path";
+import { fileURLToPath } from "url";
 
 // my modules
 import ingredientsRoute from "./routes/ingredients.js";
@@ -16,9 +18,17 @@ const app = express();
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 app.use(express.json());
 app.use(cors());
 app.use(morgan(formatsLogger));
+app.use(
+  "/thumbnails",
+  express.static(path.join(__dirname, "public/thumbnails"))
+);
+app.use("/previews", express.static(path.join(__dirname, "public/previews")));
 
 app.use("/ingredients", ingredientsRoute);
 app.use("/", othersRoute);
