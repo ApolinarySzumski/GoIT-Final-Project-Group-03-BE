@@ -4,6 +4,7 @@ import { mongoose, Schema, model } from "mongoose";
 const ingredientMeasureSchema = new Schema({
   measure: {
     type: String,
+    enum: ["tbs", "tsp", "kg", "g", "ml", "piece"],
     required: true,
   },
 });
@@ -12,7 +13,6 @@ const recipeSchema = new Schema(
   {
     title: {
       type: String,
-      enum: ["tbs", "tsp", "kg", "g", "ml", "piece"],
       required: true,
     },
     category: {

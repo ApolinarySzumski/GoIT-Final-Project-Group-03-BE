@@ -19,7 +19,8 @@ const addMyRecipe = async (req, res, next) => {
     time,
     ingredients,
     instructions,
-    area,
+    thumb,
+    preview,
   } = req.body;
   const userId = req.user._id;
   try {
