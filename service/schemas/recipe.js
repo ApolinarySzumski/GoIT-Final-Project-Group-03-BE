@@ -6,6 +6,10 @@ const ingredientMeasureSchema = new Schema({
     type: String,
     required: true,
   },
+  quantity: {
+    type: Number,
+    required: true,
+  },
   measure: {
     type: String,
     enum: ["tbs", "tsp", "kg", "g", "ml", "piece"],
