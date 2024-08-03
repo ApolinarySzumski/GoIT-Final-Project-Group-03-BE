@@ -1,5 +1,5 @@
 // npm modules
-import { Schema, model } from "mongoose";
+import { mongoose, Schema, model } from "mongoose";
 
 const ingredientMeasureSchema = new Schema({
   measure: {
@@ -12,6 +12,7 @@ const recipeSchema = new Schema(
   {
     title: {
       type: String,
+      enum: ["tbs", "tsp", "kg", "g", "ml", "piece"],
       required: true,
     },
     category: {
@@ -36,7 +37,6 @@ const recipeSchema = new Schema(
     },
     area: {
       type: String,
-      required: true,
     },
     instructions: {
       type: String,
@@ -57,12 +57,12 @@ const recipeSchema = new Schema(
       type: Number,
       required: true,
     },
-    // favorites: [
-    //   {
-    //     type: mongoose.Types.ObjectId,
-    //     ref: "User",
-    //   },
-    // ],
+    favorites: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "User",
+      },
+    ],
     youtube: {
       type: String,
       validate: /^(http|https):\/\/[^\s]+$/,

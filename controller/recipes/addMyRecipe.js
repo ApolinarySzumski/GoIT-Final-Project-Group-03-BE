@@ -30,7 +30,8 @@ const addMyRecipe = async (req, res, next) => {
       time,
       ingredients,
       instructions,
-      area,
+      thumb,
+      preview,
     });
     res.json({
       message: "Recipe added successfully",
