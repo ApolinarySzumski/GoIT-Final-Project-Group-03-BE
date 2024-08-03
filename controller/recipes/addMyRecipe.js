@@ -19,8 +19,8 @@ const addMyRecipe = async (req, res, next) => {
     time,
     ingredients,
     instructions,
-    thumb,
-    preview,
+    // thumb,
+    // preview,
   } = req.body;
   const userId = req.user._id;
   try {
@@ -31,8 +31,8 @@ const addMyRecipe = async (req, res, next) => {
       time,
       ingredients,
       instructions,
-      thumb,
-      preview,
+      // thumb,
+      // preview,
     });
     res.json({
       message: "Recipe added successfully",
