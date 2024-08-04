@@ -1,3 +1,5 @@
+import Category from '../../service/schemas/categoriesList.js'
+
 const getCategoryNames = async (req, res, next) => {
   try {
     const categories = await Category.find().select("title").sort({ title: 1 });
