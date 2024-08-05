@@ -4,9 +4,7 @@ const getCategoryNames = async (req, res, next) => {
   try {
     const categories = await Category.find().select("title").sort({ title: 1 });
 
-    const categoryNames = categories.map((category) => category.title);
-
-    res.json(categoryNames);
+    res.json(categories);
   } catch (err) {
     console.log(err);
     next(err);
