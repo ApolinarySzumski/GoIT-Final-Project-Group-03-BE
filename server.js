@@ -8,7 +8,6 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 // my modules
-import ingredientsRoute from "./routes/ingredients.js";
 import othersRoute from "./routes/others.js";
 import recipesRoute from "./routes/recipes.js";
 import authRoute from "./routes/auth.js";
@@ -30,7 +29,6 @@ app.use(
 );
 app.use("/previews", express.static(path.join(__dirname, "public/previews")));
 
-app.use("/ingredients", ingredientsRoute);
 app.use("/", othersRoute);
 app.use("/recipes", recipesRoute);
 app.use("/users", authRoute);
