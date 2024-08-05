@@ -1,3 +1,6 @@
+//my modules
+import User from "../../service/schemas/user.js";
+
 const logoutUser = async (req, res, next) => {
   try {
     const user = await User.findById(req.user._id);
