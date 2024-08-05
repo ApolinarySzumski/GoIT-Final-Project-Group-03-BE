@@ -15,7 +15,7 @@ import validateBody, {
   loginSchema,
   registerSchema,
   updateDetailsSchema,
-} from "../validation/userValidation.js";
+} from "../middlewares/validation/userValidation.js";
 
 const route = express.Router();
 

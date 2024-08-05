@@ -27,7 +27,7 @@ const addRecipe = async (userId, recipeData) => {
 };
 
 const addMyRecipe = async (req, res, next) => {
-  const { title, description, category, time, ingredients, instructions } =
+  const { title, description, area, category, time, ingredients, instructions } =
     req.body;
 
   let parsedIngredients;
@@ -37,11 +37,27 @@ const addMyRecipe = async (req, res, next) => {
     return res.status(400).json({ message: "Invalid ingredients format" });
   }
 
+  const userId = req.user._id;
+  
+  if(!req.file) {
+    const result = await addRecipe(userId, {
+      title,
+      description,
+      area,
+      category,
+      time,
+      ingredients: parsedIngredients,
+      instructions,
+  });
+  return res.json({
+    message: "Recipe added successfully",
+    data: { recipe: result },
+  });
+}
+
   const { path: tmpPath, originalname } = req.file;
 
   try {
-    const userId = req.user._id;
-
     await fs.mkdir(thumbsDir, { recursive: true });
     await fs.mkdir(previewsDir, { recursive: true });
 
@@ -63,6 +79,7 @@ const addMyRecipe = async (req, res, next) => {
     const result = await addRecipe(userId, {
       title,
       description,
+      area,
       category,
       time,
       ingredients: parsedIngredients,

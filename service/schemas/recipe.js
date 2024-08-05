@@ -2,12 +2,6 @@
 import mongoose, { Schema, model } from "mongoose";
 
 const ingredientMeasureSchema = new Schema({
-  measure: {
-    type: String,
-  },
-});
-
-const ingredientMeasureSchema = new Schema({
   name: {
     type: String,
     required: true,
