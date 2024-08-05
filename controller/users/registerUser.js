@@ -1,3 +1,6 @@
+//my modules
+import User from "../../service/schemas/user.js";
+
 const registerUser = async (req, res, next) => {
   const { name, email, password } = req.body;
 

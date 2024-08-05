@@ -10,7 +10,7 @@ import getRecipeById from '../controller/recipes/getRecipeById.js'
 
 const route = express.Router();
 
-route.get('/category-list', authorization, getCategoryNames);
+route.get("/category-list", authorization, getCategoryNames);
 
 route.get('/main-page', authorization, getRecipes);
 

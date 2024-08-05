@@ -1,10 +1,13 @@
+//my modules
+import User from "../../service/schemas/user.js";
+
 const updateUserDetails = async (req, res, next) => {
   try {
     const { name, email } = req.body;
     const user = await User.findByIdAndUpdate(
       req.user._id,
       { name, email },
-      { new: true },
+      { new: true }
     );
     if (!user) {
       return res.status(404).json({ message: "User not found" });
