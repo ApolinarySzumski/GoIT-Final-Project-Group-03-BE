@@ -2,10 +2,8 @@
 import express from "express";
 
 // my modules
-import {
-  getIngredients,
-  getRecipesByIngredient,
-} from "../controller/ingredients.js";
+import getIngredients from "../controller/recipes/getIngredientNames.js";
+import getRecipesByIngredient from "../controller/recipes/getRecipesByIngredientId.js";
 import authorization from "../middlewares/jwtMiddleware.js";
 
 const route = express.Router();
