@@ -1,5 +1,11 @@
 // npm modules
-import { Schema, model, mongoose } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
+
+const ingredientMeasureSchema = new Schema({
+  measure: {
+    type: String,
+  },
+});
 
 const ingredientMeasureSchema = new Schema({
   name: {
@@ -45,6 +51,7 @@ const recipeSchema = new Schema(
     },
     area: {
       type: String,
+      required: true,
     },
     instructions: {
       type: String,
