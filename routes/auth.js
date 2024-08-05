@@ -2,35 +2,34 @@
 import express from "express";
 
 // my modules
-
-import authorization from "../middlewares/jwtMiddleware.js";
-import validateBody, {
-  registerSchema,
-  loginSchema,
-  updateDetailsSchema,
-} from "../validation/userValidation.js";
 import passport from "../config/passportConfig.js";
 import {
-  register,
-  login,
-  getCurrentUser,
+  getUser,
+  loginUser,
+  logoutUser,
+  registerUser,
   updateUserDetails,
-  logout,
-} from "../controller/auth.js";
+} from "../controller/users/index.js";
+import authorization from "../middlewares/jwtMiddleware.js";
+import validateBody, {
+  loginSchema,
+  registerSchema,
+  updateDetailsSchema,
+} from "../validation/userValidation.js";
 
 const route = express.Router();
 
 route.use(passport.initialize());
 
-route.post("/register", validateBody(registerSchema), register);
-route.post("/login", validateBody(loginSchema), login);
-route.get("/current", authorization, getCurrentUser);
+route.post("/register", validateBody(registerSchema), registerUser);
+route.post("/login", validateBody(loginSchema), loginUser);
+route.get("/current", authorization, getUser);
 route.patch(
   "/update",
   authorization,
   validateBody(updateDetailsSchema),
   updateUserDetails,
 );
-route.get("/logout", authorization, logout);
+route.get("/logout", authorization, logoutUser);
 
 export default route;

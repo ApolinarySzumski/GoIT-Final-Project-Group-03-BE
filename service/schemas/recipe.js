@@ -4,6 +4,21 @@ import mongoose, { Schema, model } from "mongoose";
 const ingredientMeasureSchema = new Schema({
   measure: {
     type: String,
+  },
+});
+
+const ingredientMeasureSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  quantity: {
+    type: Number,
+    required: true,
+  },
+  measure: {
+    type: String,
+    enum: ["tbs", "tsp", "kg", "g", "ml", "piece"],
     required: true,
   },
 });
@@ -73,8 +88,13 @@ const recipeSchema = new Schema(
       },
     ],
     ingredients: [ingredientMeasureSchema],
+    owner: {
+      type: String,
+      ref: "User",
+      required: true,
+    },
   },
-  { versionKey: false, timestamps: true },
+  { versionKey: false, timestamps: true }
 );
 
 const Recipe = model("recipe", recipeSchema, "recipes");

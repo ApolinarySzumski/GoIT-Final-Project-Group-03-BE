@@ -1,7 +1,9 @@
 // npm modules
 import express from "express";
+import authorization from "../middlewares/jwtMiddleware.js";
 
 // my modules
+import subscribeNewsletter from "../controller/others.js";
 
 const route = express.Router();
 
@@ -10,6 +12,6 @@ route.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-// route.post("/subscribe", subscribeNewsletter);
+route.post("/subscribe", authorization, subscribeNewsletter);
 
 export default route;
