@@ -1,5 +1,5 @@
 // npm modules
-import { mongoose, Schema, model } from "mongoose";
+import { Schema, model, mongoose } from "mongoose";
 
 const ingredientMeasureSchema = new Schema({
   name: {
