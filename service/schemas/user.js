@@ -37,9 +37,14 @@ const userSchema = new Schema({
         ref: 'ingredient'
       },
       quantity: {
+        type: Number,
+        required: [true, "Quantity of ingredient is required"]
+      },
+      measure: {
         type: String,
-        required: [true, "Quantity of product is required"]
-      }
+        enum: ["tbs", "tsp", "kg", "g", "ml", "piece"],
+        required: [true, "Measure of ingredient is required"]
+      },
     }
   ]
 });
