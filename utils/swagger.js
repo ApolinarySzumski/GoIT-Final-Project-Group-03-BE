@@ -6,7 +6,7 @@ const options = {
     openapi: "3.0.0",
     info: {
       title: "REST API Group-03 Docs",
-      //   version,
+      version: "1.0.0",
     },
     components: {
       securitySchemas: {
