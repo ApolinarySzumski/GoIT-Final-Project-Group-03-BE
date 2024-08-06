@@ -28,13 +28,7 @@ route.use(passport.initialize());
  *   tags:
  *   - User
  *   summary: Register a user
- *  requestBody:
- *    required: true
- *    content:
- *      application/json:
- *        schema:
- *          $ref: '#/components/schemas/CreateUserInput'
- *    responses:
+ *   responses:
  *      200:
  *        description: Success
  *        content:
@@ -45,12 +39,36 @@ route.use(passport.initialize());
  *        description: Conflict
  *      400:
  *        description: Bad request
- *
  */
-
 route.post("/register", validateBody(registerSchema), registerUser);
+
+/**
+ * @openapi
+ * '/users/login':
+ *  post:
+ *   tags:
+ *   - User
+ *   summary: Login a user
+ *   responses:
+ *      200:
+ *        description: Success
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/CreateUserResponse'
+ *      409:
+ *        description: Conflict
+ *      400:
+ *        description: Bad request
+*/
 route.post("/login", validateBody(loginSchema), loginUser);
+
+
+
 route.get("/current", authorization, getUser);
+
+
+
 route.patch(
   "/update",
   authorization,

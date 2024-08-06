@@ -4,6 +4,7 @@ import bCrypt from "bcrypt";
 
 /**
  * @openapi
+ *
  * components:
  *  schemas:
  *    CreateUserInput:
