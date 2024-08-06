@@ -24,6 +24,12 @@ const userSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  favorites: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'recipe'
+    }
+  ]
 });
 
 userSchema.methods.setPassword = async function (password) {

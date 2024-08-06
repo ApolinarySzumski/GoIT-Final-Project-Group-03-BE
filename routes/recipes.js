@@ -14,10 +14,10 @@ route.use(authorization);
 
 route.get("/category-list", getCategoryNames);
 
-route.get("/main-page", getRecipes);
+route.get('/main-page', getRecipes);
 
-route.get("/category/:category", getRecipesByCategory);
+route.get('/category/:category', getRecipesByCategory);
 
-route.get("/:id", getRecipeById);
+route.get('/:id', getRecipeById);
 
 export default route;
