@@ -5,6 +5,11 @@ export const getFavoriteRecipes = async (req, res, next) => {
 
     try {
         const user = await User.findById(userId).populate('favorites');
+
+        if(user.favorites.length === 0) {
+            return res.status(200).json({message: 'No favorite recipes found'})
+        }
+        
         res.status(200).json(user.favorites)
     } catch (err) {
         next(err)
