@@ -7,6 +7,9 @@ import subscribeNewsletter from "../controller/others.js";
 import addToFavorites from '../controller/favorites/addToFavorites.js'
 import removeFromFavorites from '../controller/favorites/removeFromFavorites.js'
 import getFavoriteRecipes from '../controller/favorites/getFavoriteRecipes.js'
+import addIngredientToList from '../controller/shopping-list/addIngredientToList.js'
+import removeIngredientFromList from '../controller/shopping-list/removeIngredientFromList.js'
+import getIngredientList from '../controller/shopping-list/getIngredientList.js'
 
 const route = express.Router();
 
@@ -24,5 +27,11 @@ route.post('/favorite', addToFavorites);
 route.delete('/favorite', removeFromFavorites);
 
 route.get('/favorite', getFavoriteRecipes)
+
+route.post("/shopping-list", addIngredientToList);
+
+route.delete("/shopping-list", removeIngredientFromList);
+
+route.get('/shopping-list', getIngredientList)
 
 export default route;

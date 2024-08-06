@@ -29,6 +29,18 @@ const userSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'recipe'
     }
+  ],
+  shoppingList: [
+    {
+      ingredient: {
+        type: Schema.Types.ObjectId,
+        ref: 'ingredient'
+      },
+      quantity: {
+        type: String,
+        required: [true, "Quantity of product is required"]
+      }
+    }
   ]
 });
 
