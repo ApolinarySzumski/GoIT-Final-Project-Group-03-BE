@@ -8,11 +8,12 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 // my modules
-import ingredientsRoute from "./routes/ingredients.js";
 import othersRoute from "./routes/others.js";
+import ingredientsRoute from "./routes/ingredients.js";
 import recipesRoute from "./routes/recipes.js";
 import authRoute from "./routes/auth.js";
 import ownRecipesRoute from "./routes/ownRecipes.js";
+import searchRoute from "./routes/search.js";
 
 const app = express();
 
@@ -30,11 +31,12 @@ app.use(
 );
 app.use("/previews", express.static(path.join(__dirname, "public/previews")));
 
-app.use("/ingredients", ingredientsRoute);
 app.use("/", othersRoute);
+app.use("/ingredients", ingredientsRoute);
 app.use("/recipes", recipesRoute);
 app.use("/users", authRoute);
 app.use("/ownRecipes", ownRecipesRoute);
+app.use("/search", searchRoute);
 
 app.use((_, res) => {
   res.status(404).json({ message: "Not found" });
