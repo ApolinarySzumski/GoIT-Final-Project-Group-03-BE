@@ -4,6 +4,9 @@ import authorization from "../middlewares/jwtMiddleware.js";
 
 // my modules
 import subscribeNewsletter from "../controller/others.js";
+import addToFavorites from '../controller/favorites/addToFavorites.js'
+import removeFromFavorites from '../controller/favorites/removeFromFavorites.js'
+import getFavoriteRecipes from '../controller/favorites/getFavoriteRecipes.js'
 
 const route = express.Router();
 
@@ -13,5 +16,11 @@ route.get("/", (req, res) => {
 });
 
 route.post("/subscribe", authorization, subscribeNewsletter);
+
+route.post('/favorite', authorization, addToFavorites);
+
+route.delete('/favorite', authorization, removeFromFavorites);
+
+route.get('/favorite', authorization, getFavoriteRecipes)
 
 export default route;

@@ -69,7 +69,7 @@ const recipeSchema = new Schema(
     favorites: [
       {
         type: mongoose.Types.ObjectId,
-        ref: "User",
+        ref: "user",
       },
     ],
     youtube: {
