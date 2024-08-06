@@ -10,17 +10,19 @@ import getFavoriteRecipes from '../controller/favorites/getFavoriteRecipes.js'
 
 const route = express.Router();
 
+route.use(authorization);
+
 // testing route
 route.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-route.post("/subscribe", authorization, subscribeNewsletter);
+route.post("/subscribe", subscribeNewsletter);
 
-route.post('/favorite', authorization, addToFavorites);
+route.post('/favorite', addToFavorites);
 
-route.delete('/favorite', authorization, removeFromFavorites);
+route.delete('/favorite', removeFromFavorites);
 
-route.get('/favorite', authorization, getFavoriteRecipes)
+route.get('/favorite', getFavoriteRecipes)
 
 export default route;
