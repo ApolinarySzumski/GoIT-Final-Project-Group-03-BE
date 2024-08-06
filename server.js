@@ -39,6 +39,8 @@ app.use("/users", authRoute);
 app.use("/ownRecipes", ownRecipesRoute);
 app.use("/search", searchRoute);
 
+swaggerDocs(app);
+
 app.use((_, res) => {
   res.status(404).json({ message: "Not found" });
 });
@@ -76,4 +78,3 @@ const registerListeners = () => {
 // Calling necessary funtions, order of calling is important
 registerListeners();
 connect();
-swaggerDocs(app, PORT);
