@@ -27,7 +27,7 @@ route.use(passport.initialize());
  *  post:
  *   tags:
  *   - User
- *   summary: Register a user
+ *   summary: Register user
  *   responses:
  *      200:
  *        description: Success
@@ -35,10 +35,12 @@ route.use(passport.initialize());
  *          application/json:
  *            schema:
  *              $ref: '#/components/schemas/CreateUserResponse'
+ *      201:
+ *        description: User registered successfully
  *      400:
  *        description: Bad request
  *      409:
- *        description: Conflict
+ *        description: Conflict, Email already in use
  */
 route.post("/register", validateBody(registerSchema), registerUser);
 
@@ -48,14 +50,14 @@ route.post("/register", validateBody(registerSchema), registerUser);
  *  post:
  *   tags:
  *   - User
- *   summary: Login a user
+ *   summary: Login user
  *   responses:
  *      200:
  *        description: Success
  *        content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/CreateUserResponse'
+ *              $ref: '#/components/schemas/LoginUserResponse'
  *      400:
  *        description: Bad request
  *      401:
@@ -64,11 +66,47 @@ route.post("/register", validateBody(registerSchema), registerUser);
 route.post("/login", validateBody(loginSchema), loginUser);
 
 
-
+/**
+ * @openapi
+ * '/users/current':
+ *  get:
+ *   tags:
+ *   - User
+ *   summary: Get user
+ *   responses:
+ *      200:
+ *        description: Success
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/GetUserResponse'
+ *      400:
+ *        description: Bad request
+ *      401:
+ *        description: Email or password is incorrect
+*/
 route.get("/current", authorization, getUser);
 
 
-
+/**
+ * @openapi
+ * '/users/update':
+ *  patch:
+ *   tags:
+ *   - User
+ *   summary: Update user
+ *   responses:
+ *      200:
+ *        description: Success, Details have been updated succesfully
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/UpdateUserResponse'
+ *      400:
+ *        description: Bad request
+ *      404:
+ *        description: User not found
+*/
 route.patch(
   "/update",
   authorization,
@@ -80,10 +118,10 @@ route.patch(
 /**
  * @openapi
  * '/users/logoutUser':
- *  post:
+ *  get:
  *   tags:
  *   - User
- *   summary: Logout a user
+ *   summary: Logout user
  *   responses:
  *      200:
  *        description: Success

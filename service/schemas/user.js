@@ -2,6 +2,7 @@
 import { Schema, model } from "mongoose";
 import bCrypt from "bcrypt";
 
+// register swagger
 /**
  * @openapi
  * components:
@@ -36,6 +37,105 @@ import bCrypt from "bcrypt";
  *        subscribe:
  *          type: boolean
  */
+
+
+// login swagger
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    LoginUserInput:
+ *      type: object
+ *      required:
+ *        - name
+ *        - email
+ *        - password
+ *      properties:
+ *        name:
+ *          type: string
+ *          default: exampleName
+ *        email:
+ *          type: string
+ *          default: example@email.com
+ *        password:
+ *          type: string
+ *          default: examplePassword123
+ *    LoginUserResponse:
+ *      type: object
+ *      properties:
+ *        _id:
+ *          type: string
+ *        email:
+ *          type: string
+ *        token:
+ *          type: string
+ */
+
+
+// update user swagger
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    UpdateUserInput:
+ *      type: object
+ *      required:
+ *        - email
+ *        - password
+ *      properties:
+ *        email:
+ *          type: string
+ *          default: example@email.com
+ *        password:
+ *          type: string
+ *          default: examplePassword123
+ *    UpdateUserResponse:
+ *      type: object
+ *      properties:
+ *        _id:
+ *          type: string
+ *        name:
+ *          type: string
+ *        email:
+ *          type: string
+ *        token:
+ *          type: string
+ *        subscribe:
+ *          type: boolean
+ */
+
+// get user swagger
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    GetUserInput:
+ *      type: object
+ *      required:
+ *        - email
+ *        - password
+ *      properties:
+ *        email:
+ *          type: string
+ *          default: example@email.com
+ *        password:
+ *          type: string
+ *          default: examplePassword123
+ *    GetUserResponse:
+ *      type: object
+ *      properties:
+ *        _id:
+ *          type: string
+ *        name:
+ *          type: string
+ *        email:
+ *          type: string
+ *        token:
+ *          type: string
+ *        subscribe:
+ *          type: boolean
+ */
+
 
 const userSchema = new Schema({
   name: {
