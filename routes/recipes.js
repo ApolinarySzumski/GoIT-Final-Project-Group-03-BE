@@ -30,7 +30,7 @@ const route = express.Router();
 
 route.get("/category-list", authorization, getCategoryNames);
 
-//?
+
 /**
  * @openapi
  * '/recipes/main-page':
@@ -48,7 +48,6 @@ route.get("/category-list", authorization, getCategoryNames);
  *      400:
  *        description: Bad request
  */
-
 route.get("/main-page", authorization, getRecipes);
 
 /**
@@ -67,11 +66,12 @@ route.get("/main-page", authorization, getRecipes);
  *              $ref: '#/components/schemas/CategoriesListResponse'
  *      400:
  *        description: Bad request
+ *      404:
+ *        description: No recipes found for ${category} category
  */
-
 route.get("/category/:category", authorization, getRecipesByCategory);
 
-//?
+
 /**
  * @openapi
  * '/recipes/:id':
@@ -88,8 +88,9 @@ route.get("/category/:category", authorization, getRecipesByCategory);
  *              $ref: '#/components/schemas/CategoriesListResponse'
  *      400:
  *        description: Bad request
+ *      404:
+ *        description: Recipe not found
  */
-
 route.get("/:id", authorization, getRecipeById);
 
 export default route;
