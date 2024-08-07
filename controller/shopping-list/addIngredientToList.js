@@ -25,7 +25,9 @@ export const addIngredientToList = async (req, res, next) => {
 
         await user.save();
 
-        res.status(200).json(user.shoppingList);
+        const updatedUser = await User.findById(userId).populate('shoppingList.ingredient');
+
+        res.status(200).json(updatedUser.shoppingList);
     } catch (err) {
         next(err)
     }
