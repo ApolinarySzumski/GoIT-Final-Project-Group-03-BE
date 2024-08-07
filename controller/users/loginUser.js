@@ -33,7 +33,8 @@ const loginUser = async (req, res, next) => {
       user: {
         name: user.name,
         email: user.email,
-        subscription: user.subscription,
+        subscribe: user.subscribe,
+        avatarURL: user.avatarURL,
       },
     });
   } catch (error) {

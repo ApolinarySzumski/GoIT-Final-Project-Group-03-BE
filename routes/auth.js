@@ -109,7 +109,7 @@ route.get("/current", authorization, getUser);
 route.patch(
   "/update",
   authorization,
-  upload.single("avatar"),
+  upload.single("avatarURL"),
   validateBody(updateDetailsSchema),
   updateUserDetails
 );

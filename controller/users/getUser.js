@@ -6,6 +6,7 @@ const getUser = async (req, res, next) => {
       name: user.name,
       email: user.email,
       subscribe: user.subscribe,
+      avatarURL: user.avatarURL,
     });
   } catch (error) {
     next(error);
