@@ -2,18 +2,16 @@
 import express from "express";
 
 //my modules
-import authorization from "../middlewares/jwtMiddleware.js";
 import addMyRecipe from "../controller/recipes/addMyRecipe.js";
 import deleteMyRecipe from "../controller/recipes/deleteMyRecipe.js";
 import getOwnRecipes from "../controller/recipes/getMyRecipes.js";
+import authorization from "../middlewares/jwtMiddleware.js";
 import upload from "../middlewares/multerMiddleware.js";
 
 const route = express.Router();
 
-route.use(authorization);
-
-route.post("/add", upload.single("thumb"), addMyRecipe);
-route.delete("/:id", deleteMyRecipe);
-route.get("/", getOwnRecipes);
+route.post("/add", authorization, upload.single("thumb"), addMyRecipe);
+route.delete("/:id", authorization, deleteMyRecipe);
+route.get("/", authorization, getOwnRecipes);
 
 export default route;
