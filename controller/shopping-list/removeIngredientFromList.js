@@ -16,7 +16,7 @@ export const removeIngredientFromList = async (req, res, next) => {
         );
 
         if (existingItemIndex === -1) {
-            return res.status(400).json({ message: 'Ingredient not found in your shopping list' });
+            return res.status(404).json({ message: 'Ingredient not found in your shopping list' });
         }
 
         user.shoppingList = user.shoppingList.filter(
