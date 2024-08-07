@@ -21,9 +21,29 @@ route.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-route.get("/search", authorization, searchRecipeByKeyword);
+/**
+ * @openapi
+ * '/subscribe':
+ *  post:
+ *   tags:
+ *   - User
+ *   summary: Subscribe
+ *   responses:
+ *      200:
+ *        description: Success, Email sent successfully
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/SubscribeInput'
+ *      400:
+ *        description: Wrong email or you already subscribe to our newsletter
+ *      500:
+ *        description: Could not send email
+ */
 
 route.post("/subscribe", authorization, subscribeNewsletter);
+
+route.get("/search", authorization, searchRecipeByKeyword);
 
 route.post("/favorite", authorization, setMyFavoriteRecipe);
 
