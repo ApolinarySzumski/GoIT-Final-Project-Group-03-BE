@@ -35,10 +35,10 @@ route.use(passport.initialize());
  *          application/json:
  *            schema:
  *              $ref: '#/components/schemas/CreateUserResponse'
- *      409:
- *        description: Conflict
  *      400:
  *        description: Bad request
+ *      409:
+ *        description: Conflict
  */
 route.post("/register", validateBody(registerSchema), registerUser);
 
@@ -56,10 +56,10 @@ route.post("/register", validateBody(registerSchema), registerUser);
  *          application/json:
  *            schema:
  *              $ref: '#/components/schemas/CreateUserResponse'
- *      409:
- *        description: Conflict
  *      400:
  *        description: Bad request
+ *      401:
+ *        description: Email or password is incorrect
 */
 route.post("/login", validateBody(loginSchema), loginUser);
 
@@ -75,6 +75,27 @@ route.patch(
   validateBody(updateDetailsSchema),
   updateUserDetails,
 );
+
+
+/**
+ * @openapi
+ * '/users/logoutUser':
+ *  post:
+ *   tags:
+ *   - User
+ *   summary: Logout a user
+ *   responses:
+ *      200:
+ *        description: Success
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/CreateUserResponse'
+ *      204:
+ *        description: No content
+ *      400:
+ *        description: Bad request
+ */
 route.get("/logout", authorization, logoutUser);
 
 export default route;
