@@ -13,7 +13,6 @@ import ingredientsRoute from "./routes/ingredients.js";
 import othersRoute from "./routes/others.js";
 import ownRecipesRoute from "./routes/ownRecipes.js";
 import recipesRoute from "./routes/recipes.js";
-import searchRoute from "./routes/search.js";
 import swaggerDocs from "./utils/swagger.js";
 
 const app = express();
