@@ -1,28 +1,29 @@
 // npm modules
 import express from "express";
-import authorization from "../middlewares/jwtMiddleware.js";
 
 // my modules
-import subscribeNewsletter from "../controller/others.js";
-import addToFavorites from '../controller/favorites/addToFavorites.js'
-import removeFromFavorites from '../controller/favorites/removeFromFavorites.js'
-import getFavoriteRecipes from '../controller/favorites/getFavoriteRecipes.js'
+import getMyFavoriteRecipes from "../controller/recipes/getMyFavoriteRecipes.js";
+import searchRecipeByKeyword from "../controller/recipes/searchRecipeByKeyword.js";
+import setMyFavoriteRecipe from "../controller/recipes/setMyFavoriteRecipe.js";
+import subscribeNewsletter from "../controller/recipes/subscribeNewsletter.js";
+import unsetMyFavoriteRecipe from "../controller/recipes/unsetMyFavoriteRecipe.js";
+import authorization from "../middlewares/jwtMiddleware.js";
 
 const route = express.Router();
-
-route.use(authorization);
 
 // testing route
 route.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-route.post("/subscribe", subscribeNewsletter);
+route.get("/search", authorization, searchRecipeByKeyword);
 
-route.post('/favorite', addToFavorites);
+route.post("/subscribe", authorization, subscribeNewsletter);
 
-route.delete('/favorite', removeFromFavorites);
+route.post("/favorite", authorization, setMyFavoriteRecipe);
 
-route.get('/favorite', getFavoriteRecipes)
+route.delete("/favorite", authorization, unsetMyFavoriteRecipe);
+
+route.get("/favorite", authorization, getMyFavoriteRecipes);
 
 export default route;

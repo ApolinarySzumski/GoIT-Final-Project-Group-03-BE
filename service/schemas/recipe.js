@@ -87,7 +87,7 @@ const recipeSchema = new Schema(
       required: true,
     },
   },
-  { versionKey: false, timestamps: true }
+  { versionKey: false, timestamps: true },
 );
 
 const Recipe = model("recipe", recipeSchema, "recipes");

@@ -8,9 +8,7 @@ import authorization from "../middlewares/jwtMiddleware.js";
 
 const route = express.Router();
 
-route.use(authorization);
-
-route.get("/list", getIngredients);
-route.get("/:ingredient", getRecipesByIngredient);
+route.get("/list", authorization, getIngredients);
+route.get("/:ingredient", authorization, getRecipesByIngredient);
 
 export default route;
