@@ -16,6 +16,7 @@ import validateBody, {
   registerSchema,
   updateDetailsSchema,
 } from "../middlewares/validation/userValidation.js";
+import upload from "../middlewares/multerMiddleware.js";
 
 const route = express.Router();
 
@@ -62,9 +63,8 @@ route.post("/register", validateBody(registerSchema), registerUser);
  *        description: Bad request
  *      401:
  *        description: Email or password is incorrect
-*/
+ */
 route.post("/login", validateBody(loginSchema), loginUser);
-
 
 /**
  * @openapi
@@ -84,9 +84,8 @@ route.post("/login", validateBody(loginSchema), loginUser);
  *        description: Bad request
  *      401:
  *        description: Email or password is incorrect
-*/
+ */
 route.get("/current", authorization, getUser);
-
 
 /**
  * @openapi
@@ -106,14 +105,14 @@ route.get("/current", authorization, getUser);
  *        description: Bad request
  *      404:
  *        description: User not found
-*/
+ */
 route.patch(
   "/update",
   authorization,
+  upload.single("avatar"),
   validateBody(updateDetailsSchema),
-  updateUserDetails,
+  updateUserDetails
 );
-
 
 /**
  * @openapi
