@@ -13,6 +13,7 @@ import getRecipesByCategory from "./getRecipesByCategory.js";
 import getRecipesByIngredientId from "./getRecipesByIngredientId.js";
 import getShoppingList from "./getShoppingList.js";
 import setMyFavoriteRecipe from "./setMyFavoriteRecipe.js";
+import subscribeNewsletter from "./subscribeNewsletter.js";
 import unsetMyFavoriteRecipe from "./unsetMyFavoriteRecipe.js";
 
 export {
@@ -31,5 +32,6 @@ export {
   getRecipesByIngredientId,
   getShoppingList,
   setMyFavoriteRecipe,
+  subscribeNewsletter,
   unsetMyFavoriteRecipe,
 };

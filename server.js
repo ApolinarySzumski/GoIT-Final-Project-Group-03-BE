@@ -8,12 +8,11 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 // my modules
-import othersRoute from "./routes/others.js";
-import ingredientsRoute from "./routes/ingredients.js";
-import recipesRoute from "./routes/recipes.js";
 import authRoute from "./routes/auth.js";
+import ingredientsRoute from "./routes/ingredients.js";
+import othersRoute from "./routes/others.js";
 import ownRecipesRoute from "./routes/ownRecipes.js";
-import searchRoute from "./routes/search.js";
+import recipesRoute from "./routes/recipes.js";
 
 const app = express();
 
@@ -27,7 +26,7 @@ app.use(cors());
 app.use(morgan(formatsLogger));
 app.use(
   "/thumbnails",
-  express.static(path.join(__dirname, "public/thumbnails"))
+  express.static(path.join(__dirname, "public/thumbnails")),
 );
 app.use("/previews", express.static(path.join(__dirname, "public/previews")));
 
@@ -36,7 +35,6 @@ app.use("/ingredients", ingredientsRoute);
 app.use("/recipes", recipesRoute);
 app.use("/users", authRoute);
 app.use("/ownRecipes", ownRecipesRoute);
-app.use("/search", searchRoute);
 
 app.use((_, res) => {
   res.status(404).json({ message: "Not found" });
@@ -54,7 +52,7 @@ const connect = async () => {
   try {
     await mongoose.connect(uriDb, { dbName: "So-Yummy" });
     app.listen(PORT, () =>
-      console.log(`Server running. Use our API on port ${PORT}`)
+      console.log(`Server running. Use our API on port ${PORT}`),
     );
   } catch (error) {
     console.log(`Something went wrong, full error is: ${error}`);
@@ -65,10 +63,10 @@ const connect = async () => {
 // Funtion to inform developer about database answers
 const registerListeners = () => {
   mongoose.connection.on("connected", () =>
-    console.log("Database connection successful")
+    console.log("Database connection successful"),
   );
   mongoose.connection.on("disconnected", () =>
-    console.log("Database connection is broken")
+    console.log("Database connection is broken"),
   );
 };
 
