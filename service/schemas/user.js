@@ -137,6 +137,34 @@ import bCrypt from "bcrypt";
  */
 
 
+// subscribe swagger
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    SubscribeInput:
+ *      type: object
+ *      required:
+ *        - email
+ *      properties:
+ *        email:
+ *          type: string
+ *          default: example@email.com
+ *    SubscribeResponse:
+ *      type: object
+ *      properties:
+ *        _id:
+ *          type: string
+ *        name:
+ *          type: string
+ *        email:
+ *          type: string
+ *        token:
+ *          type: string
+ *        subscribe:
+ *          type: boolean
+ */
+
 const userSchema = new Schema({
   name: {
     type: String,
