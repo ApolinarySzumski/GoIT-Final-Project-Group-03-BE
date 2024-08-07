@@ -7,6 +7,18 @@ export const removeIngredientFromList = async (req, res, next) => {
     try {
         const user = await User.findById(userId);
 
+        if (!ingredientId) {
+            return res.status(400).json({ message: 'Ingredient ID is required' });
+        }
+
+        const existingItemIndex = user.shoppingList.findIndex(
+            item => item.ingredient._id.toString() === ingredientId.toString()
+        );
+
+        if (existingItemIndex === -1) {
+            return res.status(400).json({ message: 'Ingredient not found in your shopping list' });
+        }
+
         user.shoppingList = user.shoppingList.filter(
             item => item.ingredient.toString() !== ingredientId.toString()
         );
