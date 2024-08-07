@@ -45,7 +45,6 @@ const recipeSchema = new Schema(
     },
     area: {
       type: String,
-      required: true,
     },
     instructions: {
       type: String,
