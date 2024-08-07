@@ -1,14 +1,11 @@
-//npm modules
-import express from "express";
+// //npm modules
+// import express from "express";
 
-//my modules
-import authorization from "../middlewares/jwtMiddleware.js";
-import searchRecipeByKeyword from "../controller/recipes/searchRecipeByKeyword.js";
+// //my modules
+// import authorization from "../middlewares/jwtMiddleware.js";
 
-const route = express.Router();
+// const route = express.Router();
 
-route.use(authorization);
+// route.use(authorization);
 
-route.get("/", searchRecipeByKeyword);
-
-export default route;
+// export default route;

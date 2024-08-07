@@ -29,8 +29,8 @@ route.use(authorization);
  *      404:
  *        description: Not found any ingredients in database
  */
-route.get("/list", getIngredients);
 
+route.get("/list", authorization, getIngredients);
 
 /**
  * @openapi
@@ -51,6 +51,7 @@ route.get("/list", getIngredients);
  *      404:
  *        description: Not found any ingredients in database
  */
-route.get("/:ingredient", getRecipesByIngredient);
+
+route.get("/:ingredient", authorization, getRecipesByIngredient);
 
 export default route;

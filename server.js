@@ -37,7 +37,6 @@ app.use("/ingredients", ingredientsRoute);
 app.use("/recipes", recipesRoute);
 app.use("/users", authRoute);
 app.use("/ownRecipes", ownRecipesRoute);
-app.use("/search", searchRoute);
 
 swaggerDocs(app);
 

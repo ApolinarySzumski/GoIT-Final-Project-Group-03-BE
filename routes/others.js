@@ -1,9 +1,18 @@
 // npm modules
 import express from "express";
-import authorization from "../middlewares/jwtMiddleware.js";
 
 // my modules
-import subscribeNewsletter from "../controller/others.js";
+import addToFavorites from '../controller/favorites/addToFavorites.js'
+import getFavoriteRecipes from '../controller/favorites/getFavoriteRecipes.js'
+import addIngredientToList from '../controller/shopping-list/addIngredientToList.js'
+import removeIngredientFromList from '../controller/shopping-list/removeIngredientFromList.js'
+import getIngredientList from '../controller/shopping-list/getIngredientList.js'
+import getMyFavoriteRecipes from "../controller/recipes/getMyFavoriteRecipes.js";
+import searchRecipeByKeyword from "../controller/recipes/searchRecipeByKeyword.js";
+import setMyFavoriteRecipe from "../controller/recipes/setMyFavoriteRecipe.js";
+import subscribeNewsletter from "../controller/recipes/subscribeNewsletter.js";
+import unsetMyFavoriteRecipe from "../controller/recipes/unsetMyFavoriteRecipe.js";
+import authorization from "../middlewares/jwtMiddleware.js";
 
 const route = express.Router();
 
@@ -11,7 +20,6 @@ const route = express.Router();
 route.get("/", (req, res) => {
   res.send("Hello World");
 });
-
 
 /**
  * @openapi
@@ -32,6 +40,21 @@ route.get("/", (req, res) => {
  *      500:
  *        description: Could not send email
  */
+
 route.post("/subscribe", authorization, subscribeNewsletter);
+
+route.get("/search", authorization, searchRecipeByKeyword);
+
+route.post("/favorite", authorization, setMyFavoriteRecipe);
+
+route.delete("/favorite", authorization, unsetMyFavoriteRecipe);
+
+route.get("/favorite", authorization, getMyFavoriteRecipes);
+
+route.post("/shopping-list", addIngredientToList);
+
+route.delete("/shopping-list", removeIngredientFromList);
+
+route.get('/shopping-list', getIngredientList)
 
 export default route;

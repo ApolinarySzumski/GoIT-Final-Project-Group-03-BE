@@ -45,7 +45,6 @@ const recipeSchema = new Schema(
     },
     area: {
       type: String,
-      required: true,
     },
     instructions: {
       type: String,
@@ -69,7 +68,7 @@ const recipeSchema = new Schema(
     favorites: [
       {
         type: mongoose.Types.ObjectId,
-        ref: "User",
+        ref: "user",
       },
     ],
     youtube: {
@@ -88,7 +87,7 @@ const recipeSchema = new Schema(
       required: true,
     },
   },
-  { versionKey: false, timestamps: true }
+  { versionKey: false, timestamps: true },
 );
 
 const Recipe = model("recipe", recipeSchema, "recipes");
