@@ -29,6 +29,23 @@ const userSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'recipe'
     }
+  ],
+  shoppingList: [
+    {
+      ingredient: {
+        type: Schema.Types.ObjectId,
+        ref: 'ingredient'
+      },
+      quantity: {
+        type: Number,
+        required: [true, "Quantity of ingredient is required"]
+      },
+      measure: {
+        type: String,
+        enum: ["tbs", "tsp", "kg", "g", "ml", "piece"],
+        required: [true, "Measure of ingredient is required"]
+      },
+    }
   ]
 });
 
