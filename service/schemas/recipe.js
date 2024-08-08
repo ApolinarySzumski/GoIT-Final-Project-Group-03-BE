@@ -1,7 +1,6 @@
 // npm modules
 import mongoose, { Schema, model } from "mongoose";
 
-
 // Ingredients - swagger
 /**
  * @openapi
@@ -34,23 +33,23 @@ import mongoose, { Schema, model } from "mongoose";
  *          type: string
  */
 
-const ingredientMeasureSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
+const ingredientMeasureSchema = new Schema([
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    quantity: {
+      type: Number,
+      required: true,
+    },
+    measure: {
+      type: String,
+      enum: ["tbp", "tsp", "kg", "g", "ml", "piece"],
+      required: true,
+    },
   },
-  quantity: {
-    type: Number,
-    required: true,
-  },
-  measure: {
-    type: String,
-    enum: ["tbs", "tsp", "kg", "g", "ml", "piece"],
-    required: true,
-  },
-});
-
-
+]);
 
 // Search - swagger
 /**
@@ -71,7 +70,6 @@ const ingredientMeasureSchema = new Schema({
  *        title:
  *          type: string
  */
-
 
 // Favorite, recipe swagger
 /**
@@ -102,7 +100,7 @@ const ingredientMeasureSchema = new Schema({
  *        owner:
  *          type: string
  *          default: UserName
- * 
+ *
  *    RecipeResponse:
  *      type: object
  *      properties:
@@ -163,7 +161,7 @@ const recipeSchema = new Schema(
       validate: /^(http|https):\/\/[^\s]+$/,
     },
     time: {
-      type: Number,
+      type: String,
       required: true,
     },
     favorites: [
@@ -188,7 +186,7 @@ const recipeSchema = new Schema(
       required: true,
     },
   },
-  { versionKey: false, timestamps: true },
+  { versionKey: false, timestamps: true }
 );
 
 const Recipe = model("recipe", recipeSchema, "recipes");
