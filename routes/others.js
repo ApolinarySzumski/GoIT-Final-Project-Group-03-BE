@@ -10,6 +10,7 @@ import searchRecipeByKeyword from "../controller/recipes/searchRecipeByKeyword.j
 import setMyFavoriteRecipe from "../controller/recipes/setMyFavoriteRecipe.js";
 import subscribeNewsletter from "../controller/recipes/subscribeNewsletter.js";
 import unsetMyFavoriteRecipe from "../controller/recipes/unsetMyFavoriteRecipe.js";
+import getPopularRecipes from "../controller/recipes/getPopularRecipes.js";
 import authorization from "../middlewares/jwtMiddleware.js";
 
 const route = express.Router();
@@ -160,8 +161,10 @@ route.post("/shopping-list", addIngredientToList);
  *      404:
  *        description: Ingredient not found in your shopping list
  */
-route.delete("/shopping-list", removeIngredientFromList);
+route.delete("/shopping-list", authorization, removeIngredientFromList);
 
-route.get("/shopping-list", getIngredientList);
+route.get("/shopping-list", authorization, getIngredientList);
+
+route.get("/popular-recipe", authorization, getPopularRecipes);
 
 export default route;
