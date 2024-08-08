@@ -2,14 +2,15 @@
 import express from "express";
 
 // my modules
-import addIngredientToList from "../controller/recipes/addToShoppingList.js";
-import removeIngredientFromList from "../controller/recipes/deleteFromShoppingList.js";
+import addIngredientToList from "../controller/recipes/addToShoppingList.js"; // new
+import removeIngredientFromList from "../controller/recipes/deleteFromShoppingList.js"; // new
 import getMyFavoriteRecipes from "../controller/recipes/getMyFavoriteRecipes.js";
-import getIngredientList from "../controller/recipes/getShoppingList.js";
+import getIngredientList from "../controller/recipes/getShoppingList.js"; // new
 import searchRecipeByKeyword from "../controller/recipes/searchRecipeByKeyword.js";
 import setMyFavoriteRecipe from "../controller/recipes/setMyFavoriteRecipe.js";
 import subscribeNewsletter from "../controller/recipes/subscribeNewsletter.js";
 import unsetMyFavoriteRecipe from "../controller/recipes/unsetMyFavoriteRecipe.js";
+import getPopularRecipes from "../controller/recipes/getPopularRecipes.js"; // new
 import authorization from "../middlewares/jwtMiddleware.js";
 
 const route = express.Router();
@@ -139,7 +140,7 @@ route.get("/favorite", authorization, getMyFavoriteRecipes);
  *      404:
  *        description: Ingredient not found
  */
-route.post("/shopping-list", addIngredientToList);
+route.post("/shopping-list", authorization, addIngredientToList);
 
 /**
  * @openapi
@@ -160,8 +161,10 @@ route.post("/shopping-list", addIngredientToList);
  *      404:
  *        description: Ingredient not found in your shopping list
  */
-route.delete("/shopping-list", removeIngredientFromList);
+route.delete("/shopping-list", authorization, removeIngredientFromList);
 
-route.get("/shopping-list", getIngredientList);
+route.get("/shopping-list", authorization, getIngredientList);
+
+route.get("/popular-recipe", authorization, getPopularRecipes);
 
 export default route;

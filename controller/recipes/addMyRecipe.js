@@ -27,8 +27,15 @@ const addRecipe = async (userId, recipeData) => {
 };
 
 const addMyRecipe = async (req, res, next) => {
-  const { title, description, area, category, time, ingredients, instructions } =
-    req.body;
+  const {
+    title,
+    description,
+    area,
+    category,
+    time,
+    ingredients,
+    instructions,
+  } = req.body;
 
   let parsedIngredients;
   try {
@@ -38,8 +45,8 @@ const addMyRecipe = async (req, res, next) => {
   }
 
   const userId = req.user._id;
-  
-  if(!req.file) {
+
+  if (!req.file) {
     const result = await addRecipe(userId, {
       title,
       description,
@@ -48,12 +55,12 @@ const addMyRecipe = async (req, res, next) => {
       time,
       ingredients: parsedIngredients,
       instructions,
-  });
-  return res.json({
-    message: "Recipe added successfully",
-    data: { recipe: result },
-  });
-}
+    });
+    return res.json({
+      message: "Recipe added successfully",
+      data: { recipe: result },
+    });
+  }
 
   const { path: tmpPath, originalname } = req.file;
 
