@@ -27,9 +27,10 @@ app.use(cors());
 app.use(morgan(formatsLogger));
 app.use(
   "/thumbnails",
-  express.static(path.join(__dirname, "public/thumbnails")),
+  express.static(path.join(__dirname, "./public/thumbnails"))
 );
-app.use("/previews", express.static(path.join(__dirname, "public/previews")));
+app.use("/previews", express.static(path.join(__dirname, "./public/previews")));
+app.use("/avatars", express.static(path.join(__dirname, "./public/avatars")));
 
 app.use("/", othersRoute);
 app.use("/ingredients", ingredientsRoute);
@@ -55,7 +56,7 @@ const connect = async () => {
   try {
     await mongoose.connect(uriDb, { dbName: "So-Yummy" });
     app.listen(PORT, () =>
-      console.log(`Server running. Use our API on port ${PORT}`),
+      console.log(`Server running. Use our API on port ${PORT}`)
     );
   } catch (error) {
     console.log(`Something went wrong, full error is: ${error}`);
@@ -66,10 +67,10 @@ const connect = async () => {
 // Funtion to inform developer about database answers
 const registerListeners = () => {
   mongoose.connection.on("connected", () =>
-    console.log("Database connection successful"),
+    console.log("Database connection successful")
   );
   mongoose.connection.on("disconnected", () =>
-    console.log("Database connection is broken"),
+    console.log("Database connection is broken")
   );
 };
 

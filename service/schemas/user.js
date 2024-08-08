@@ -38,7 +38,6 @@ import bCrypt from "bcrypt";
  *          type: boolean
  */
 
-
 // login swagger
 /**
  * @openapi
@@ -70,7 +69,6 @@ import bCrypt from "bcrypt";
  *        token:
  *          type: string
  */
-
 
 // update user swagger
 /**
@@ -104,7 +102,6 @@ import bCrypt from "bcrypt";
  *          type: boolean
  */
 
-
 // get user swagger
 /**
  * @openapi
@@ -136,7 +133,6 @@ import bCrypt from "bcrypt";
  *        subscribe:
  *          type: boolean
  */
-
 
 // subscribe swagger
 /**
@@ -188,29 +184,33 @@ const userSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  avatarURL: {
+    type: String,
+    default: "",
+  },
   favorites: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'recipe'
-    }
+      ref: "recipe",
+    },
   ],
   shoppingList: [
     {
       ingredient: {
         type: Schema.Types.ObjectId,
-        ref: 'ingredient'
+        ref: "ingredient",
       },
       quantity: {
         type: Number,
-        required: [true, "Quantity of ingredient is required"]
+        required: [true, "Quantity of ingredient is required"],
       },
       measure: {
         type: String,
         enum: ["tbs", "tsp", "kg", "g", "ml", "piece"],
-        required: [true, "Measure of ingredient is required"]
+        required: [true, "Measure of ingredient is required"],
       },
-    }
-  ]
+    },
+  ],
 });
 
 userSchema.methods.setPassword = async function (password) {
