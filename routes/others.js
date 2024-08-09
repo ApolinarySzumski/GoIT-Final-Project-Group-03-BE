@@ -15,6 +15,10 @@ import authorization from "../middlewares/jwtMiddleware.js";
 
 const route = express.Router();
 
+route.get("/", (req, res) => {
+  res.send("Hello World");
+});
+
 /**
  * @openapi
  * '/subscribe':
