@@ -5,12 +5,12 @@ import express from "express";
 import addIngredientToList from "../controller/recipes/addToShoppingList.js"; // new
 import removeIngredientFromList from "../controller/recipes/deleteFromShoppingList.js"; // new
 import getMyFavoriteRecipes from "../controller/recipes/getMyFavoriteRecipes.js";
+import getPopularRecipes from "../controller/recipes/getPopularRecipes.js"; // new
 import getIngredientList from "../controller/recipes/getShoppingList.js"; // new
 import searchRecipeByKeyword from "../controller/recipes/searchRecipeByKeyword.js";
 import setMyFavoriteRecipe from "../controller/recipes/setMyFavoriteRecipe.js";
 import subscribeNewsletter from "../controller/recipes/subscribeNewsletter.js";
 import unsetMyFavoriteRecipe from "../controller/recipes/unsetMyFavoriteRecipe.js";
-import getPopularRecipes from "../controller/recipes/getPopularRecipes.js"; // new
 import authorization from "../middlewares/jwtMiddleware.js";
 
 const route = express.Router();
