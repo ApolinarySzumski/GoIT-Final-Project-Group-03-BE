@@ -6,10 +6,10 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const tmpDir = path.join(__dirname, "../public/tmp");
+const tmpDir = path.join(__dirname, "../public/tmp/");
 
 if (!fs.existsSync(tmpDir)) {
-  fs.mkdirSync(tmpDir, { recursive: true });
+  fs.mkdirSync(tmpDir);
 }
 
 const storage = multer.diskStorage({
