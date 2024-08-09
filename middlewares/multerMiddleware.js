@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 const tmpDir = path.join(__dirname, "../public/tmp");
 
 if (!fs.existsSync(tmpDir)) {
-  fs.mkdirSync(tmpDir);
+  fs.mkdirSync(tmpDir, { recursive: true });
 }
 
 const storage = multer.diskStorage({
