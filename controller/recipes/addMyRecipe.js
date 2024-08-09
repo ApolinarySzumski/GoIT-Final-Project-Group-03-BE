@@ -1,6 +1,6 @@
 //node modules
-import path from "path";
 import fs from "fs/promises";
+import path from "path";
 import { fileURLToPath } from "url";
 
 //npm modules
@@ -79,7 +79,6 @@ const addMyRecipe = async (req, res, next) => {
 
     const thumbURL = path.join("thumbnails", thumbName);
     const previewURL = path.join("previews", previewName);
-
     await fs.rename(tmpPath, thumbPath);
 
     const result = await addRecipe(userId, {
