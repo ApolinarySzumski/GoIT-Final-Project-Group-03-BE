@@ -91,10 +91,8 @@ const addMyRecipe = async (req, res, next) => {
       time,
       ingredients: parsedIngredients,
       instructions,
-      thumb: `${process.env.V_URL}${process.env.MAIN_PORT || 8000}/${thumbURL}`,
-      preview: `${process.env.V_URL}${
-        process.env.MAIN_PORT || 8000
-      }/${previewURL}`,
+      thumb: `${process.env.THUMB_PREFIX_URL}/${thumbURL}`,
+      preview: `${process.env.THUMB_PREFIX_URL}/${previewURL}`,
     });
     res.json({
       message: "Recipe added successfully",
