@@ -89,8 +89,8 @@ const addMyRecipe = async (req, res, next) => {
       time,
       ingredients: formattedIngredients,
       instructions,
-      thumb: `${process.env.THUMB_PREFIX_URL}/${thumbURL}`,
-      preview: `${process.env.THUMB_PREFIX_URL}/${previewURL}`,
+      thumb: `${process.env.THUMB_PREFIX_URL}${thumbURL}`,
+      preview: `${process.env.THUMB_PREFIX_URL}${previewURL}`,
     });
     res.json({
       message: "Recipe added successfully",
