@@ -1,6 +1,10 @@
 //my modules
 import Recipe from "../../service/schemas/recipe.js";
 
+const getTotalRecipesCount = (filter) => {
+  return Recipe.countDocuments(filter);
+};
+
 const getRecipes = (filter, skip, limit) => {
   return Recipe.find(filter).skip(skip).limit(Number(limit));
 };
@@ -10,12 +14,16 @@ const getMyRecipes = async (req, res, next) => {
   const skip = (page - 1) * limit;
   const userId = req.user._id;
   const filter = { owner: userId };
+
   try {
+    const total = await getTotalRecipesCount(filter);
+
     const results = await getRecipes(filter, skip, limit);
+
     if (!results || results.length === 0) {
       return res.json({ message: "No recipes added yet" });
     }
-    res.json({ data: { results } });
+    res.json({ data: { results, total } });
   } catch (error) {
     next(error);
     console.log(error);
