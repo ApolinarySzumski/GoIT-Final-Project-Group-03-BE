@@ -5,7 +5,10 @@ const getMyFavoriteRecipes = async (req, res, next) => {
   const { page = 1, limit = 4} = req.query
 
   try {
-    const user = await User.findById(userId).populate({
+    const user = await User.findById(userId);
+    const totalRecipes = user.favorites.length;
+
+    const paginatedFavorites = await User.findById(userId).populate({
       path: "favorites",
       options: {
         skip: (page - 1) * limit,
@@ -13,7 +16,6 @@ const getMyFavoriteRecipes = async (req, res, next) => {
       },
     });
 
-    const totalRecipes = user.favorites.length;
     const totalPages = Math.ceil(totalRecipes/limit);
 
     if (totalRecipes === 0) {
@@ -21,7 +23,7 @@ const getMyFavoriteRecipes = async (req, res, next) => {
     }
 
     res.status(200).json({
-      favorites: user.favorites,
+      favorites: paginatedFavorites.favorites,
       totalPages,
       currentPage: parseInt(page)
     });
