@@ -12,10 +12,19 @@ const loginUser = async (req, res, next) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
 
-    if (!user || !(await user.validatePassword(password))) {
-      return res
+    if (!user) {
+      res
         .status(401)
-        .json({ message: "Email or password is incorrect" });
+        .json({ token: "", message: "Email or password is incorrect" });
+      return;
+    }
+
+    const isCorrectPassword = await user.validatePassword(password);
+    if (!isCorrectPassword) {
+      res
+        .status(401)
+        .json({ token: "", message: "Email or password is incorrect" });
+      return;
     }
 
     const payload = {
