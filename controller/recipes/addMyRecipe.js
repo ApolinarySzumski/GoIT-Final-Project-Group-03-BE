@@ -38,10 +38,10 @@ const addMyRecipe = async (req, res, next) => {
   }
 
   const formattedIngredients = parsedIngredients.map((ingredient) => ({
-    ingredientId: ingredient.ingredientId,
-    name: ingredient.name,
-    quantity: ingredient.quantity,
-    measure: ingredient.measure,
+    id: ingredient._id,
+    ttl: ingredient.ttl,
+    thb: ingredient.thb,
+    measure: `${ingredient.quantity} ${ingredient.measure}`,
   }));
 
   const userId = req.user._id;
