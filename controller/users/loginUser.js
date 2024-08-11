@@ -15,7 +15,7 @@ const loginUser = async (req, res, next) => {
     if (!user) {
       res
         .status(401)
-        .json({ token: "", message: "Email or password is incorrect" });
+        .json({ token: null, message: "Email or password is incorrect" });
       return;
     }
 
@@ -23,7 +23,7 @@ const loginUser = async (req, res, next) => {
     if (!isCorrectPassword) {
       res
         .status(401)
-        .json({ token: "", message: "Email or password is incorrect" });
+        .json({ token: null, message: "Email or password is incorrect" });
       return;
     }
 
