@@ -3,10 +3,14 @@ import Recipe from "../../service/schemas/recipe.js";
 const getRecipeById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const recipe = await Recipe.findById(id);
 
-    if(!recipe) {
-      return res.status(404).json({ message: 'Recipe not found'})
+    const recipe = await Recipe.findById(id).populate({
+      path: 'ingredients.id',
+      select: 'ttl desc thb',
+    });
+
+    if (!recipe) {
+      return res.status(404).json({ message: 'Recipe not found' });
     }
 
     res.json(recipe);
