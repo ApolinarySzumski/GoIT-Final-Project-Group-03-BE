@@ -35,9 +35,8 @@ import mongoose, { Schema, model } from "mongoose";
 
 const ingredientMeasureSchema = new Schema([
   {
-    id: {
-      type: mongoose.Types.ObjectId,
-      ref: "ingredient",
+    name: {
+      type: String,
       required: true,
     },
     quantity: {
@@ -187,7 +186,7 @@ const recipeSchema = new Schema(
       required: true,
     },
   },
-  { versionKey: false, timestamps: true }
+  { versionKey: false, timestamps: true },
 );
 
 const Recipe = model("recipe", recipeSchema, "recipes");
