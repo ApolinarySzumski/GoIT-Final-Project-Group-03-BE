@@ -12,7 +12,8 @@ const getIngredients = async (_, res, next) => {
 
     const ingredientsList = ingredients.map((i) => ({
       _id: i._id,
-      ttl: i.ttl
+      ttl: i.ttl,
+      thb: i.thb
     }));
 
     res.json(ingredientsList);
