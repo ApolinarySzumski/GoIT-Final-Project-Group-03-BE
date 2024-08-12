@@ -6,12 +6,15 @@ const searchRecipeByKeyword = async (req, res, next) => {
   if (!keyword) {
     return res.status(400).json({ message: "Keyword is required" });
   }
+
   try {
     const results = await Recipe.find({ title: new RegExp(keyword, "i") });
-    if (results.length === 0) {
-      return res.status(404).json({ message: "No recipes found" });
-    }
-    res.json({ data: { results } });
+
+    // Zwracamy status 200, nawet jeśli `results` jest puste
+    res.status(200).json({
+      message: results.length === 0 ? "No recipes found" : "Recipes found",
+      data: { results },
+    });
   } catch (error) {
     next(error);
   }
