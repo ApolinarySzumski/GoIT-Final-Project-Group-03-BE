@@ -3,7 +3,10 @@ import User from "../../service/schemas/user.js";
 
 const addToShoppingList = async (req, res, next) => {
   const userId = req.user._id;
-  const { ingredientId, quantity, measure } = req.body;
+  const { ingredientId, measure } = req.body;
+  console.log("req.body: ", req.body);
+  console.log("ingredientId: ", ingredientId);
+  console.log("measure: ", measure);
 
   try {
     const user = await User.findById(userId).populate(
@@ -20,9 +23,12 @@ const addToShoppingList = async (req, res, next) => {
     );
 
     if (existingItemIndex > -1) {
-      user.shoppingList[existingItemIndex].quantity += quantity;
+      user.shoppingList[existingItemIndex].measure += measure;
     } else {
-      user.shoppingList.push({ ingredient: ingredientId, quantity, measure });
+      user.shoppingList.push({
+        ingredient: ingredientId,
+        measure: measure,
+      });
     }
 
     await user.save();
