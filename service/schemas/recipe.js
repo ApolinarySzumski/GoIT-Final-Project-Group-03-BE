@@ -37,7 +37,6 @@ const ingredientMeasureSchema = new Schema([
   {
     name: {
       type: String,
-      required: true,
     },
     quantity: {
       type: Number,
